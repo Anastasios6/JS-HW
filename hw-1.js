@@ -42,11 +42,11 @@ console.log("Stefan ima " + vozrast + " godini");
 stazh = 2;
 console.log(
   "Stefan ima " +
-    vozrast +
-    " godini" +
-    " i raboten stazh od" +
-    stazh +
-    " godini"
+  vozrast +
+  " godini" +
+  " i raboten stazh od" +
+  stazh +
+  " godini"
 );
 
 if (vozrast >= 64 && stazh >= 15) {
