@@ -120,7 +120,7 @@ console.log("------------");
 
 const name2 = "Sarah"
 const gender = "Female"
-function genderVerification(personGender) {
+function Verification(personGender) {
     let genders;
     if (personGender = "Female") {
         console.log("You are granted 20% discount");
@@ -131,7 +131,7 @@ function genderVerification(personGender) {
     }
     return genders;
 }
-const proverka2 = genderVerification(gender);
+const proverka2 = Verification(gender);
 
 console.log("------------");
 // 3.Sunday 50% discount on people over the age of 25 and married 
