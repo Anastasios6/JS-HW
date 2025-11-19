@@ -1,0 +1,38 @@
+.dark-mode {
+  background-color: #282828;
+  color: rgb(231, 231, 231);
+}
+
+.dark-toggle {
+  color: black;
+}
+
+
+
+#todos {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between cards */
+}
+
+.todo-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
