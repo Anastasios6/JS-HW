@@ -6,7 +6,8 @@ console.log(titleElement);
 
 const contentElements = document.getElementById("content")
 
-contentElements.style = "color:Orange";
+contentElements.style.color = "orange"
+
 contentElements.style.fontFamily = "Georgia";
 
 // site p elementi menuvanje fontFamily preku style svojstvoto
@@ -14,6 +15,7 @@ contentElements.style.fontFamily = "Georgia";
 const paragraphElements = document.querySelectorAll(".paragraphs");
 paragraphElements.forEach(paragraph => {
     paragraph.style.fontFamily = "Georgia";
+    paragraph.style.color = "orange"
 });
 
 // Event Listeners ("click", "mouseover", "mouseleave") create alert() popup
@@ -21,7 +23,7 @@ paragraphElements.forEach(paragraph => {
 const btns = document.querySelectorAll(".btn");
 btns.forEach((btn) => {
     btn.style.color = "green";
-    
+
     btn.addEventListener("click", () => {
         console.log("Clicked");
     })
@@ -29,9 +31,9 @@ btns.forEach((btn) => {
         console.log("MouseOver");
 
     })
-    btn.addEventListener ("mouseleave", () => {
+    btn.addEventListener("mouseleave", () => {
         console.log("MouseLeave");
-        
+
     })
 })
 
@@ -46,7 +48,39 @@ darkMode.addEventListener("click", () => {
 
 });
 // Input pole preku koe mozam da kreiram todo so svojstva: "title" i "completed"
+const todoInput = document.getElementById("todo-input");
+const addButton = document.getElementById("add-btn");
+const todoList = document.getElementById("todo-list");
 
+addButton.addEventListener("click", addTask);
+
+function addTask() {
+    const taskText = todoInput.value.trim();
+    if (taskText === "") {
+        alert("Please enter a task.");
+        return;
+    }
+
+
+    const cardHTML = `
+        <div class="todo-card">
+            <span>${taskText}</span>
+            <button class="delete-btn">Remove</button>
+        </div>
+    `;
+
+
+    todoList.insertAdjacentHTML('beforeend', cardHTML);
+
+
+    const newDeleteButton = todoList.lastElementChild.querySelector('.delete-btn');
+    newDeleteButton.addEventListener('click', function () {
+        this.closest('.todo-card').remove();
+    });
+
+
+    todoInput.value = "";
+}
 
 
 

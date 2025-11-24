@@ -7,5 +7,38 @@
   color: black;
 }
 
+#todo-list {
+  margin-top: 20px;
+  display: flex;
 
+  justify-content: center;
+  gap: 10px;
+}
 
+.todo-card {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.delete-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+.input-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
