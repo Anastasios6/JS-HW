@@ -1,0 +1,151 @@
+const urlParams = new URLSearchParams(window.location.search);
+const showId = urlParams.get("id");
+
+if (showId) {
+  fetch(`https://api.tvmaze.com/shows/${showId}`)
+    .then((res) => res.json())
+    .then((res) => {
+      renderShow(res);
+    });
+} else {
+  if (document.getElementById("shows-container")) {
+    fetch("https://api.tvmaze.com/shows")
+      .then((res) => res.json())
+      .then((res) => {
+        renderShows(res);
+      });
+  }
+
+  if (document.getElementById("top-movies")) {
+    fetch("https://api.tvmaze.com/shows")
+      .then((res) => res.json())
+      .then((res) => {
+        renderTopMovies(res);
+      });
+  }
+}
+
+function renderShows(shows) {
+  const showsContainer = document.getElementById("shows-container");
+
+  showsContainer.innerHTML = "";
+
+  shows.forEach((show) => {
+    const showElement = document.createElement("div");
+    showElement.classList.add("show");
+    showElement.innerHTML = `
+      <img src="${show.image.medium}" alt="${show.name}">
+      <h2>${show.name}</h2>
+      <p>${show.summary}</p>
+      <button onclick="viewShow(${show.id})">View Show </button>
+    `;
+    showsContainer.appendChild(showElement);
+  });
+}
+const darkModeToggle = document.getElementById("dark-mode");
+
+darkModeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+
+  darkModeToggle.classList.toggle("dark-toggle");
+});
+
+function viewShow(id) {
+  window.location.href = `show.html?id=${id}`;
+}
+
+function renderShow(show) {
+  const showContainer = document.getElementById("show-container");
+
+  showContainer.innerHTML = `
+    <img src="${show.image ? show.image.medium : ""}" alt="${show.name}">
+    <h2>${show.name}</h2>
+    <h4>Summary:</h4>
+    <p>${show.summary}</p>
+    <h4>Rating:</h4>
+    <span>${show.rating.average}</span>
+    <h4>Genres:</h4>
+    <span>${show.genres.join(", ")}</span>
+    <button><a href="shows.html">Back to Shows</a></button>
+  `;
+}
+
+function filterShows() {
+  const query = document.getElementById("search-show").value;
+
+  if (query === "") {
+    fetch("https://api.tvmaze.com/shows")
+      .then((res) => res.json())
+      .then((res) => {
+        shows = res;
+
+        renderShows(shows);
+      });
+  } else {
+    const url = `https://api.tvmaze.com/search/shows?q=${query}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        const filteredShows = res.map((x) => x.show);
+        renderShows(filteredShows);
+      });
+  }
+}
+
+function renderTopMovies(shows) {
+  const topMoviesContainer = document.getElementById("top-movies");
+
+  const topShows = shows
+    .filter((show) => show.rating && show.rating.average)
+    .sort((a, b) => b.rating.average - a.rating.average)
+    .slice(0, 5);
+
+  topMoviesContainer.innerHTML =
+    "<h2>Top 5 Rated Movies</h2><div class='top-movies-list'></div>";
+  const list = topMoviesContainer.querySelector(".top-movies-list");
+
+  topShows.forEach((show) => {
+    const showElement = document.createElement("div");
+    showElement.classList.add("show");
+
+    showElement.innerHTML = `
+      <img src="${show.image.medium}" alt="${show.name}">
+      <h2>${show.name}</h2>
+      <p>Rating: ${show.rating.average}</p>
+      <button onclick="viewShow(${show.id})">View Show</button>
+    `;
+    list.appendChild(showElement);
+  });
+}
+
+const overlay = document.getElementById("overlay");
+const signInButton = document.getElementById("Sign in");
+
+if (signInButton) {
+  signInButton.addEventListener("click", () => {
+    if (overlay) overlay.style.display = "block";
+  });
+}
+
+function closeLoginForm() {
+  if (overlay) overlay.style.display = "none";
+}
+
+window.closeLoginForm = closeLoginForm;
+
+const cancelButton = document.getElementById("cancelButton");
+if (cancelButton) {
+  cancelButton.addEventListener("click", closeLoginForm);
+}
+
+const loginForm = document.getElementById("loginForm");
+if (loginForm) {
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    console.log(username, password);
+    closeLoginForm();
+  });
+}
