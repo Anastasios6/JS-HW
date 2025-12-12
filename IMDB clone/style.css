@@ -21,6 +21,7 @@ header {
   justify-content: center;
   gap: 16px;
   background-color: #121212;
+  height: 75px;
 }
 header input {
   width: 400px;
