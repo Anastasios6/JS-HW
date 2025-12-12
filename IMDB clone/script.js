@@ -42,13 +42,6 @@ function renderShows(shows) {
     showsContainer.appendChild(showElement);
   });
 }
-const darkModeToggle = document.getElementById("dark-mode");
-
-darkModeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-
-  darkModeToggle.classList.toggle("dark-toggle");
-});
 
 function viewShow(id) {
   window.location.href = `show.html?id=${id}`;

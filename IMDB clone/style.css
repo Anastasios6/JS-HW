@@ -125,7 +125,7 @@ header img {
 }
 #top-movies {
   text-align: center;
-  /* color: white; */
+  color: white;
 }
 .top-movies-list {
   display: flex;
@@ -190,13 +190,7 @@ header img {
   background-color: #ddd;
   color: #333;
 }
-.dark-mode {
-  background-color: white;
-  color: black;
-}
-.dark-toggle {
-  background-color: black;
-}
+
 .index-button {
   display: flex;
   align-items: center;
