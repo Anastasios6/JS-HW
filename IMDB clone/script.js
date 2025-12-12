@@ -149,3 +149,89 @@ if (loginForm) {
     closeLoginForm();
   });
 }
+
+const moviesGenre = document.getElementById("movies-genre");
+if (moviesGenre) {
+  fetch("https://api.tvmaze.com/shows")
+    .then((res) => res.json())
+    .then((res) => {
+      renderMoviesByGenre(res);
+    });
+}
+
+const newMovies = document.getElementById("new-movies");
+if (newMovies) {
+  fetch("https://api.tvmaze.com/shows")
+    .then((res) => res.json())
+    .then((res) => {
+      renderNewMovies(res);
+    });
+}
+
+function renderMoviesByGenre(shows) {
+  const moviesByGenreContainer = document.getElementById("movies-genre");
+  const genreMap = {};
+
+  shows.forEach((show) => {
+    show.genres.forEach((genre) => {
+      if (!genreMap[genre]) {
+        genreMap[genre] = [];
+      }
+      genreMap[genre].push(show);
+    });
+  });
+  moviesByGenreContainer.innerHTML = "<h2>Movies by Genre</h2>";
+
+  const targetGenres = ["Action", "Crime", "Comedy", "Drama"];
+
+  targetGenres.forEach((genre) => {
+    if (genreMap[genre]) {
+      const genreSection = document.createElement("div");
+      genreSection.classList.add("genre-section");
+      genreSection.innerHTML = `<h2>${genre}</h2>`;
+      const genreShowsContainer = document.createElement("div");
+      genreShowsContainer.classList.add("latest-movies");
+      genreMap[genre].slice(0, 4).forEach((show) => {
+        const showElement = document.createElement("div");
+        showElement.classList.add("show");
+        showElement.innerHTML = `
+        <img src="${show.image.medium}" alt="${show.name}">
+        <h2>${show.name}</h2>
+        <button onclick="viewShow(${show.id})">View Show</button>
+      `;
+        genreShowsContainer.appendChild(showElement);
+      });
+      genreSection.appendChild(genreShowsContainer);
+      moviesByGenreContainer.appendChild(genreSection);
+    }
+  });
+}
+
+function renderNewMovies(shows) {
+  const newMoviesContainer = document.getElementById("new-movies");
+
+  const newShows = shows
+    .filter((show) => show.premiered)
+    .sort((a, b) => new Date(b.premiered) - new Date(a.premiered))
+    .slice(0, 4);
+
+  newMoviesContainer.innerHTML = "<h1>Latest Movies</h1>";
+
+  const listContainer = document.createElement("div");
+  listContainer.classList.add("latest-movies");
+
+  newShows.forEach((show) => {
+    const showElement = document.createElement("div");
+    showElement.classList.add("show");
+
+    showElement.innerHTML = `
+      <img src="${show.image.medium}" alt="${show.name}">
+      <h2>${show.name}</h2>
+      <p>Release Date: ${show.premiered}</p>
+      <button onclick="viewShow(${show.id})">View Show</button>
+    `;
+    listContainer.appendChild(showElement);
+  });
+
+  newMoviesContainer.appendChild(listContainer);
+}

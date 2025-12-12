@@ -6,6 +6,10 @@
     <title>IMDB Clone</title>
     <link rel="stylesheet" href="style.css" />
     <script src=" https://cdn.jsdelivr.net/npm/@iconify/icons-solar@1.2.3/adhesive-plaster-2-linear.min.js "></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <header>
@@ -52,9 +56,77 @@
       </div>
     </div>
 
-    <div id="top-movies"></div>
-    <button class="index-button"><a href="shows.html">Shows</a></button>
+    <div class="body-elements">
+      <div class="aside-menu-left" id="aside-menu-left">
+        <ul class="List-left">
+          <li>
+            <a href="#"><button class="index-button">Movies</button></a>
+          </li>
+          <li>
+            <a href="shows.html"
+              ><button class="index-button">TV-Shows</button></a
+            >
+          </li>
+          <li>
+            <a href="#"> <button class="index-button">Watch history</button></a>
+          </li>
+          <li>
+            <a href="#"><button class="index-button">Ratings</button></a>
+          </li>
+          <li>
+            <a href="#"><button class="index-button">Recomendations</button></a>
+          </li>
+          <li>
+            <a href="#"><button class="index-button">Members</button></a>
+          </li>
+          <li>
+            <a href="#"><button class="index-button">Social media</button></a>
+          </li>
+        </ul>
+      </div>
+      <div class="new-movies" id="new-movies"></div>
+      <div id="top-movies"></div>
+      <div class="movies-by-genre" id="movies-genre"></div>
 
+      <div class="FAQ">
+        <h1>FAQ</h1>
+        <h4>How to register?</h4>
+        <p>
+          To register, click on the "Sign in" button located at the top right
+          corner of the homepage. Follow the prompts to create a new account by
+          providing the required information.
+        </p>
+        <h4>How to add movies to my watchlist?</h4>
+        <p>
+          To add movies to your watchlist, simply click on the "Watchlist"
+          button next to the movie you want to save. You can access your
+          watchlist anytime by clicking on the "Watchlist" button in the header.
+        </p>
+        <h4>How to search for a specific movie or TV show?</h4>
+        <p>
+          Use the search bar located at the top center of the homepage. Type in
+          the name of the movie or TV show you are looking for and click the
+          "Search" button to see the results.
+        </p>
+        <h4>How to change the website theme to dark mode?</h4>
+        <p>
+          To switch to dark mode, click on the moon icon located at the top
+          right corner of the homepage. This will change the website's theme to
+          a darker color scheme for a more comfortable viewing experience in
+          low-light environments.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="social-media">
+        <h4>Follow us on social media</h4>
+        <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#"> <i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a href="#"> <i class="fa fa-twitter" aria-hidden="true"></i></a>
+        <a href="#"> <i class="fa fa-youtube" aria-hidden="true"></i></a>
+      </div>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

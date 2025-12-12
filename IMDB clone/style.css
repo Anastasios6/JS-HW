@@ -2,8 +2,17 @@
   margin: 0;
   padding: 0;
 }
+a {
+  text-decoration: none;
+  color: white;
+}
+
 body {
   background-color: #121212;
+}
+.body-elements {
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -42,8 +51,9 @@ header img {
 }
 #shows-container {
   display: grid;
+
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 16px;
+  grid-gap: 150px;
   background-color: #121212;
   color: white;
 }
@@ -54,17 +64,23 @@ header img {
   justify-content: space-between;
   gap: 12px;
   text-align: center;
-  width: 340px;
-  margin: 16px 16px;
+  width: 250px;
 
+  margin: 16px 16px;
+  color: white;
   border: 1px solid #f2c500;
   border-radius: 20px;
+}
+.show img {
+  width: 250px;
+  border-top-right-radius: 22px;
+  border-top-left-radius: 22px;
 }
 .show button {
   border-bottom-right-radius: 22px;
   border-bottom-left-radius: 22px;
   height: 50px;
-  width: 340px;
+  width: 220px;
   background-color: #121212;
   color: white;
 }
@@ -109,7 +125,7 @@ header img {
 }
 #top-movies {
   text-align: center;
-  color: white;
+  /* color: white; */
 }
 .top-movies-list {
   display: flex;
@@ -189,13 +205,84 @@ header img {
   width: 250px;
   height: 50px;
   background-color: #121212;
+  border-radius: 12px;
+  color: white;
 }
 .index-button a {
   text-decoration: none;
   color: white;
 }
+
 .index-button:hover {
   cursor: pointer;
   background-color: #f2c500;
   transition: 0.5s;
+}
+.aside-menu-left {
+  display: flex;
+  flex-direction: row;
+}
+.aside-menu-left ul li {
+  display: flex;
+  margin: 16px 10px;
+}
+.aside-menu-left .List-left {
+  display: flex;
+}
+
+.latest-movies {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 100px;
+  color: white;
+  margin-top: 20px;
+}
+.genre-section {
+  border: 1px solid #f2c500;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.movies-by-genre {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.new-movies {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: white;
+}
+.FAQ {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 20px;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  gap: 50px;
+}
+footer .social-media {
+  display: flex;
+  margin-top: 20px;
+  gap: 20px;
+  border: 1px solid #f2c500;
+  padding: 20px;
+}
+footer .social-media a {
+  color: white;
+}
+footer .social-media a:hover {
+  cursor: pointer;
+  color: #f2c500;
 }
